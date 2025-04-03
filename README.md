@@ -1,0 +1,1 @@
+# Trabalho-Pratico-Sistema-de-Calculo-de-Propriedades-Geometricas
