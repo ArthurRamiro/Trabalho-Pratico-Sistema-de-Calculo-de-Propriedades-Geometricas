@@ -4,19 +4,19 @@
 #include <string.h>
 #include <locale.h>
 
-// TP 3 - Arthur Ramiro Martins
+// M√≥dulo 3 TP - Arthur Ramiro
 
-// Estrutura para armazenar dados de uma figura geomÈtrica
+// Estrutura para armazenar dados de uma figura geom√©trica
 typedef struct {
-    char nome[50];  // Nome pode ter atÈ 50 caracteres
-    char tipo[20];  // Tipo da figura (CÌrculo, Ret‚ngulo, Tri‚ngulo)
-    double dimensao1;  // Raio (cÌrculo), largura (ret‚ngulo), base (tri‚ngulo)
-    double dimensao2;  // Altura (tri‚ngulo ou ret‚ngulo)
+    char nome[50];  // Nome pode ter at√© 50 caracteres
+    char tipo[20];  // Tipo da figura (C√≠rculo, Ret√¢ngulo, Tri√¢ngulo)
+    double dimensao1;  // Raio (c√≠rculo), largura (ret√¢ngulo), base (tri√¢ngulo)
+    double dimensao2;  // Altura (tri√¢ngulo ou ret√¢ngulo)
     double area;
     double perimetro;
 } Figura;
 
-// FunÁıes para c·lculo de ·reas e perÌmetros
+// Fun√ß√µes para c√°lculo de √°reas e per√≠metros
 double calcular_area_circulo(double raio) {
     return 3.14 * raio * raio;
 }
@@ -42,7 +42,7 @@ double calcular_perimetro_triangulo(double base, double altura) {
     return base + altura + hipotenusa;
 }
 
-// FunÁ„o recursiva para calcular o fatorial de um n˙mero
+// Fun√ß√£o recursiva para calcular o fatorial de um n√∫mero
 long long fatorial(int n) {
     if (n == 0 || n == 1) {
         return 1;
@@ -51,27 +51,27 @@ long long fatorial(int n) {
     }
 }
 
-// FunÁ„o para calcular o perÌmetro aproximado de uma figura irregular
+// Fun√ß√£o para calcular o per√≠metro aproximado de uma figura irregular
 double calcular_perimetro_irregular(int lados, double comprimento_lado) {
     long long fator = fatorial(lados);  // Usando o fatorial de n lados para calcular um valor aproximado
     double perimetro_aproximado = lados * comprimento_lado / fator;
     return perimetro_aproximado;
 }
 
-// FunÁ„o para exibir o menu
+// Fun√ß√£o para exibir o menu
 void exibir_menu() {
-    printf("\nEscolha a figura geomÈtrica:\n");
-    printf("1. CÌrculo\n");
-    printf("2. Ret‚ngulo\n");
-    printf("3. Tri‚ngulo\n");
+    printf("\nEscolha a figura geom√©trica:\n");
+    printf("1. C√≠rculo\n");
+    printf("2. Ret√¢ngulo\n");
+    printf("3. Tri√¢ngulo\n");
     printf("4. Figura Irregular\n");
     printf("0. Sair\n");
 }
 
-// FunÁ„o para exibir as informaÁıes de todas as figuras
+// Fun√ß√£o para exibir as informa√ß√µes de todas as figuras
 void exibir_tabela(Figura* figuras, int count) {
     printf("\n----------------------------------------------------------------------------------------------------------\n");
-    printf("| %-20s | %-15s | %-12s | %-12s | %-7s | %-9s | %-9s |\n", "Nome", "Tipo", "Dimens„o 1", "Dimens„o 2", "¡rea", "PerÌmetro", "Figura");
+    printf("| %-20s | %-15s | %-12s | %-12s | %-7s | %-9s | %-9s |\n", "Nome", "Tipo", "Dimens√£o 1", "Dimens√£o 2", "√Årea", "Per√≠metro", "Figura");
     printf("----------------------------------------------------------------------------------------------------------\n");
     for (int i = 0; i < count; i++) {
         printf("| %-20s | %-15s | %-12.2lf | %-12.2lf | %-7.2lf | %-9.2lf | %-9d |\n", 
@@ -80,7 +80,7 @@ void exibir_tabela(Figura* figuras, int count) {
     printf("----------------------------------------------------------------------------------------------------------\n");
 }
 
-// FunÁ„o para trocar as dimensıes de duas figuras usando ponteiros
+// Fun√ß√£o para trocar as dimens√µes de duas figuras usando ponteiros
 void trocar_dimensoes(Figura* fig1, Figura* fig2) {
     double temp_dimensao1 = fig1->dimensao1;
     double temp_dimensao2 = fig1->dimensao2;
@@ -92,7 +92,7 @@ void trocar_dimensoes(Figura* fig1, Figura* fig2) {
     fig2->dimensao2 = temp_dimensao2;
 }
 
-// FunÁ„o para liberar a memÛria alocada dinamicamente
+// Fun√ß√£o para liberar a mem√≥ria alocada dinamicamente
 void liberar_memoria(Figura* figuras) {
     free(figuras);
 }
@@ -100,9 +100,9 @@ void liberar_memoria(Figura* figuras) {
 int main() {
     setlocale(LC_ALL, "Portuguese_Brazil");
 
-    Figura* figuras = malloc(sizeof(Figura) * 10);  // AlocaÁ„o din‚mica para armazenar atÈ 10 figuras
+    Figura* figuras = malloc(sizeof(Figura) * 10);  // Aloca√ß√£o din√¢mica para armazenar at√© 10 figuras
     if (figuras == NULL) {
-        printf("Erro ao alocar memÛria.\n");
+        printf("Erro ao alocar mem√≥ria.\n");
         return 1;
     }
 
@@ -111,7 +111,7 @@ int main() {
 
     do {
         exibir_menu();
-        printf("Digite sua opÁ„o: ");
+        printf("Digite sua op√ß√£o: ");
         scanf("%d", &opcao);
 
         if (opcao == 0) {
@@ -126,16 +126,16 @@ int main() {
 
         Figura nova_figura;
         printf("Digite o nome da figura: ");
-        scanf(" %[^\n]%*c", nova_figura.nome);  // Permite que o usu·rio digite o nome da figura com espaÁos
+        scanf(" %[^\n]%*c", nova_figura.nome);  // Permite que o usu√°rio digite o nome da figura com espa√ßos
 
         switch(opcao) {
-            case 1:  // CÌrculo
-                printf("Digite o raio do cÌrculo: ");
+            case 1:  // C√≠rculo
+                printf("Digite o raio do c√≠rculo: ");
                 scanf("%lf", &nova_figura.dimensao1);
-                printf("\nEscolha a operaÁ„o:\n");
-                printf("1. C·lculo da ·rea\n");
-                printf("2. C·lculo do perÌmetro\n");
-                printf("Digite sua opÁ„o: ");
+                printf("\nEscolha a opera√ß√£o:\n");
+                printf("1. C√°lculo da √°rea\n");
+                printf("2. C√°lculo do per√≠metro\n");
+                printf("Digite sua op√ß√£o: ");
                 scanf("%d", &operacao);
 
                 if (operacao == 1) {
@@ -145,22 +145,22 @@ int main() {
                     nova_figura.area = calcular_area_circulo(nova_figura.dimensao1);
                     nova_figura.perimetro = calcular_perimetro_circulo(nova_figura.dimensao1);
                 } else {
-                    printf("OperaÁ„o inv·lida!\n");
+                    printf("Opera√ß√£o inv√°lida!\n");
                     break;
                 }
-                strcpy(nova_figura.tipo, "CÌrculo");
+                strcpy(nova_figura.tipo, "C√≠rculo");
                 figuras[count++] = nova_figura;
                 break;
 
-            case 2:  // Ret‚ngulo
-                printf("Digite a largura do ret‚ngulo: ");
+            case 2:  // Ret√¢ngulo
+                printf("Digite a largura do ret√¢ngulo: ");
                 scanf("%lf", &nova_figura.dimensao1);
-                printf("Digite a altura do ret‚ngulo: ");
+                printf("Digite a altura do ret√¢ngulo: ");
                 scanf("%lf", &nova_figura.dimensao2);
-                printf("\nEscolha a operaÁ„o:\n");
-                printf("1. C·lculo da ·rea\n");
-                printf("2. C·lculo do perÌmetro\n");
-                printf("Digite sua opÁ„o: ");
+                printf("\nEscolha a opera√ß√£o:\n");
+                printf("1. C√°lculo da √°rea\n");
+                printf("2. C√°lculo do per√≠metro\n");
+                printf("Digite sua op√ß√£o: ");
                 scanf("%d", &operacao);
 
                 if (operacao == 1) {
@@ -170,22 +170,22 @@ int main() {
                     nova_figura.area = calcular_area_retangulo(nova_figura.dimensao1, nova_figura.dimensao2);
                     nova_figura.perimetro = calcular_perimetro_retangulo(nova_figura.dimensao1, nova_figura.dimensao2);
                 } else {
-                    printf("OperaÁ„o inv·lida!\n");
+                    printf("Opera√ß√£o inv√°lida!\n");
                     break;
                 }
-                strcpy(nova_figura.tipo, "Ret‚ngulo");
+                strcpy(nova_figura.tipo, "Ret√¢ngulo");
                 figuras[count++] = nova_figura;
                 break;
 
-            case 3:  // Tri‚ngulo
-                printf("Digite a base do tri‚ngulo: ");
+            case 3:  // Tri√¢ngulo
+                printf("Digite a base do tri√¢ngulo: ");
                 scanf("%lf", &nova_figura.dimensao1);
-                printf("Digite a altura do tri‚ngulo: ");
+                printf("Digite a altura do tri√¢ngulo: ");
                 scanf("%lf", &nova_figura.dimensao2);
-                printf("\nEscolha a operaÁ„o:\n");
-                printf("1. C·lculo da ·rea\n");
-                printf("2. C·lculo do perÌmetro\n");
-                printf("Digite sua opÁ„o: ");
+                printf("\nEscolha a opera√ß√£o:\n");
+                printf("1. C√°lculo da √°rea\n");
+                printf("2. C√°lculo do per√≠metro\n");
+                printf("Digite sua op√ß√£o: ");
                 scanf("%d", &operacao);
 
                 if (operacao == 1) {
@@ -195,15 +195,15 @@ int main() {
                     nova_figura.area = calcular_area_triangulo(nova_figura.dimensao1, nova_figura.dimensao2);
                     nova_figura.perimetro = calcular_perimetro_triangulo(nova_figura.dimensao1, nova_figura.dimensao2);
                 } else {
-                    printf("OperaÁ„o inv·lida!\n");
+                    printf("Opera√ß√£o inv√°lida!\n");
                     break;
                 }
-                strcpy(nova_figura.tipo, "Tri‚ngulo");
+                strcpy(nova_figura.tipo, "Tri√¢ngulo");
                 figuras[count++] = nova_figura;
                 break;
 
             case 4:  // Figura Irregular
-                printf("Digite o n˙mero de lados da figura irregular: ");
+                printf("Digite o n√∫mero de lados da figura irregular: ");
                 int lados;
                 scanf("%d", &lados);
                 printf("Digite o comprimento de cada lado: ");
@@ -211,21 +211,21 @@ int main() {
                 scanf("%lf", &comprimento_lado);
 
                 double perimetro_irregular = calcular_perimetro_irregular(lados, comprimento_lado);
-                printf("PerÌmetro aproximado da figura irregular com %d lados: %.2lf\n", lados, perimetro_irregular);
+                printf("Per√≠metro aproximado da figura irregular com %d lados: %.2lf\n", lados, perimetro_irregular);
                 
                 strcpy(nova_figura.tipo, "Irregular");
-                nova_figura.dimensao1 = lados;  // Salva o n˙mero de lados na primeira dimens„o
-                nova_figura.dimensao2 = comprimento_lado;  // Salva o comprimento de cada lado na segunda dimens„o
-                nova_figura.perimetro = perimetro_irregular;  // Salva o perÌmetro calculado
-                nova_figura.area = 0;  // A ·rea n„o ser· calculada para figuras irregulares nesse exemplo
+                nova_figura.dimensao1 = lados;  // Salva o n√∫mero de lados na primeira dimens√£o
+                nova_figura.dimensao2 = comprimento_lado;  // Salva o comprimento de cada lado na segunda dimens√£o
+                nova_figura.perimetro = perimetro_irregular;  // Salva o per√≠metro calculado
+                nova_figura.area = 0;  // A √°rea n√£o ser√° calculada para figuras irregulares nesse exemplo
                 figuras[count++] = nova_figura;
                 break;
 
             default:
-                printf("OpÁ„o inv·lida! Tente novamente.\n");
+                printf("Op√ß√£o inv√°lida! Tente novamente.\n");
         }
 
-        printf("\nDeseja realizar outra operaÁ„o? (1 - Sim, 0 - N„o): ");
+        printf("\nDeseja realizar outra opera√ß√£o? (1 - Sim, 0 - N√£o): ");
         scanf("%d", &opcao);
 
     } while (opcao == 1);
@@ -233,7 +233,7 @@ int main() {
     // Exibir tabela de todas as figuras calculadas
     exibir_tabela(figuras, count);
 
-    // Liberar a memÛria alocada dinamicamente
+    // Liberar a mem√≥ria alocada dinamicamente
     liberar_memoria(figuras);
 
     return 0;
